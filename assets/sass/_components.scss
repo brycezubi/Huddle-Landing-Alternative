@@ -1,0 +1,51 @@
+@use 'variables' as v;
+@use 'querys' as q;
+
+@mixin card{
+  display: grid;
+  row-gap: 6rem;
+  padding: 4rem 2.5rem;
+  text-align: center;
+  background-color: #fff;
+  border-radius: 1rem;
+  max-width: 45rem;
+}
+
+.container{
+  width: calc(100% - 12.5%);
+  margin-inline: auto;
+  max-width: 120rem;
+}
+
+.card{
+  @include card();
+
+  img{
+    width: 100%;
+  }
+
+  &__content{
+    justify-self: center;
+    align-self: center;
+    p{
+      color: v.$Grayish-Blue;
+    }
+  }
+
+  @include q.lg{
+    max-width: 98rem;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 7rem;
+    text-align: justify;
+    padding: 5rem 3rem;
+
+    &:nth-of-type(2n+1){
+      img{
+        grid-column: 2/3;
+        grid-row: 1/2;
+      }
+    }
+
+  }
+
+}

@@ -1,0 +1,332 @@
+@use "mixins.scss" as m;
+@use "variables" as v;
+@use "components";
+@use "querys" as q;
+
+html {
+  box-sizing: border-box;
+  font-size: 62.5%;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-size: 1.75rem;
+  font-family: "Open Sans", sans-serif;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: "Poppins", sans-serif;
+  color: v.$Dark-Cyan;
+}
+
+a {
+  text-decoration: none;
+}
+
+li {
+  list-style: none;
+}
+
+// HEADER
+.header {
+  min-height: 100vh;
+  background-color: v.$Pale-Cyan;
+  position: relative;
+
+  &::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url(../images/bg-hero-mobile.svg);
+    background-repeat: no-repeat;
+    background-position: center -140px;
+    background-size: cover;
+    z-index: 1;
+
+    @include q.lg {
+      background-image: url(../images/bg-hero-desktop.svg);
+      background-position: center center;
+    }
+  }
+
+  .nav {
+    @include m.Flex();
+    justify-content: space-between;
+    padding-top: 2rem;
+
+    @include q.lg {
+      padding-top: 3.5rem;
+    }
+
+    &__logo {
+      z-index: 100;
+      img {
+        max-width: 15rem;
+      }
+    }
+
+    &__btn {
+      color: v.$Dark-Cyan;
+      font-weight: 700;
+      font-size: 1.25rem;
+      padding: 0.5rem 2.5rem;
+      border-radius: 2.5rem;
+      background-color: white;
+      border: 1px solid transparent;
+      transition: 0.2s;
+      z-index: 100;
+
+      &:hover {
+        border: 1px solid v.$Pink;
+      }
+    }
+  }
+
+  .hero {
+    @include m.Flex(column, 5rem);
+    min-height: 92vh;
+
+    @include q.xl {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+    }
+
+    &__img {
+      width: 100%;
+      max-width: 60rem;
+      z-index: 100;
+    }
+
+    &__content {
+      text-align: center;
+      @include m.Flex(column, 4rem);
+      max-width: 60rem;
+      z-index: 100;
+      @include q.xl {
+        text-align: left;
+        align-items: flex-start;
+        max-width: 50rem;
+        h1 {
+          font-size: 3.25rem;
+          max-width: 40rem;
+          text-transform: capitalize;
+        }
+      }
+
+      .cta {
+        padding: 1.15rem 4.5rem;
+        background-color: v.$Pink;
+        border: none;
+        outline: none;
+        color: white;
+        border-radius: 2.5rem;
+        cursor: pointer;
+        transition: 0.3s;
+
+        &:hover {
+          letter-spacing: 0.08rem;
+        }
+      }
+    }
+  }
+}
+
+// MAIN
+.main {
+  background-color: #eee;
+  display: grid;
+  row-gap: 3.5rem;
+  place-items: center;
+  padding-block: 15rem;
+}
+
+// COMUNITY
+.comunity {
+  position: relative;
+
+  .container {
+    max-width: 68rem;
+    margin-inline: auto;
+    text-align: center;
+    padding: 2.5rem;
+    border-radius: 0.85rem;
+    background-color: white;
+
+    h2 {
+      @include q.lg {
+        padding-bottom: 2.5rem;
+      }
+    }
+    .btn {
+      display: inline-block;
+      margin-top: 2rem;
+      color: white;
+      font-weight: 700;
+      font-size: 1.25rem;
+      padding: 1rem 5rem;
+      border-radius: 2.5rem;
+      background-color: v.$Pink;
+      border: 1px solid transparent;
+      transition: 0.2s;
+      cursor: pointer;
+
+      &:hover {
+        letter-spacing: 2px;
+      }
+    }
+
+    &:after {
+      content: "";
+      position: absolute;
+      width: 100%;
+      height: 50%;
+      background-color: v.$Dark-Cyan;
+      bottom: 0;
+      left: 0;
+      z-index: -1;
+    }
+    &:before {
+      content: "";
+      position: absolute;
+      width: 100%;
+      height: 50%;
+      background-color:#eee;
+      top: 0;
+      left: 0;
+      z-index: -1;
+    }
+  }
+}
+  // FOOTER
+  .footer {
+    background-color: v.$Dark-Cyan;
+    color: whitesmoke;
+    padding-block-start: 10rem;
+    padding-block-end: 5rem;
+
+    
+
+    .container {
+      display: flex;
+      flex-direction: column;
+      gap: 4.5rem;
+
+      svg {
+        @include q.md {
+          margin-bottom: 3rem;
+        }
+      }
+
+      @include q.md {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        column-gap: 4rem;
+        row-gap: 0;
+      }
+
+      @include q.xl {
+        grid-template-columns: 1fr 1fr 1fr;
+        column-gap: 12rem;
+      }
+    }
+
+    &__info {
+      @include m.Flex(column, 1.5rem);
+      align-items: flex-start;
+
+      @include q.md {
+        grid-column: 1/2;
+      }
+      .info {
+        @include m.Flex(row, 1rem);
+        justify-content: flex-start;
+        align-items: center;
+
+        &:nth-of-type(1) {
+          align-items: flex-start;
+        }
+      }
+    }
+
+    &__nav {
+      @include q.md {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-column: 2/3;
+      }
+      ul {
+        @include m.Flex(column, 1.5rem);
+        align-items: flex-start;
+
+        @include q.md {
+          justify-content: flex-start;
+        }
+
+        li {
+          cursor: pointer;
+
+          &:hover {
+            text-decoration: underline;
+          }
+        }
+      }
+    }
+    &__social {
+      @include q.md {
+        grid-column: 2/3;
+      }
+
+      @include q.lg {
+        grid-column: 3/4;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+      }
+      .icons {
+        padding-bottom: 2rem;
+        @include m.Flex(row, 1.5rem);
+
+        @include q.lg {
+          justify-content: flex-start;
+        }
+
+        i {
+          font-size: 1.3rem;
+          width: 30px;
+          height: 30px;
+          border: 1px solid white;
+          border-radius: 50%;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          cursor: pointer;
+
+          &:hover {
+            border: 1px solid transparent;
+            background-color: red;
+          }
+        }
+      }
+      p {
+        font-size: 1.3rem;
+        text-align: center;
+
+        @include q.lg {
+          text-align: left;
+        }
+      }
+    }
+  }
+
