@@ -26,7 +26,7 @@ Frontend Mentor challenges help you improve your coding skills by building reali
 
 ### Screenshot
 
-![Design preview for the Huddle landing page coding challenge](https://github.com/Orisabiyi/qr-component-code/blob/main/design/desktop-preview.jpg)
+![Design preview for the Huddle landing page coding challenge](https://github.com/brycezubi/Huddle-Landing-Alternative/blob/main/assets/design/desktop-preview.jpg)
 
 ### Links
 
